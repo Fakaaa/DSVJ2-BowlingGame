@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 3539748100963265619}
   - component: {fileID: 3539748100963265616}
   - component: {fileID: 3539748100963265617}
-  - component: {fileID: 3539748100963265630}
+  - component: {fileID: 293734301963833985}
   m_Layer: 0
   m_Name: Middle
   m_TagString: Untagged
@@ -520,14 +520,14 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3539748100963265630
+--- !u!64 &293734301963833985
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3539748100963265631}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ad1028c8e87184748bcebdddf8e18910, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -593,7 +593,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4076bda5cf1792344a25852430db5353, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

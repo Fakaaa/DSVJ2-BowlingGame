@@ -69,4 +69,9 @@ public class Ball : MonoBehaviour
             ballFocusCamera.followBall = true;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        ballFocusCamera.followBall = false;
+    }
 }
