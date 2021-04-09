@@ -9,11 +9,20 @@ public class Ball : MonoBehaviour
     [SerializeField] int forceMultipler;
     [SerializeField] private float actualForce;
 
-    private bool throwBall = false;
-    private float forceAplied = 0;
+    [SerializeField] FocusBall ballFocusCamera;
+    [SerializeField] public bool onPrepareShoot;
+
+    private float forceApliedX = 0;
+    private float forceApliedZ = 0;
+    public void PreMoveBall()
+    {
+        Vector3 moveVec = new Vector3(0, 0, forceApliedZ);
+        //--
+        ball.AddForce(moveVec);
+    }
     public void MoveBall()
     {
-        Vector3 moveVec = new Vector3(forceAplied, 0, 0);
+        Vector3 moveVec = new Vector3(forceApliedX, 0, 0);
         //--
         ball.AddForce(moveVec);
     }
@@ -21,16 +30,28 @@ public class Ball : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            forceAplied += forceMultipler * Time.deltaTime;
+            forceApliedX += forceMultipler * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            forceAplied -= forceMultipler * Time.deltaTime;
+            forceApliedX -= forceMultipler * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            forceApliedZ += 100 * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            forceApliedZ -= 100 * Time.deltaTime;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            MoveBall();
+            onPrepareShoot = false;
+            ballFocusCamera.followBall = true;
+            if(!onPrepareShoot)
+                MoveBall();
         }
-        actualForce = forceAplied;
+        PreMoveBall();
+        actualForce = forceApliedX;
     }
 }
