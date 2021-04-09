@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Ball : MonoBehaviour
 {
@@ -18,9 +19,13 @@ public class Ball : MonoBehaviour
 
     public float forceApliedX = 0;
     public bool ballMoving;
+    public bool ballSoundStops;
+    private AudioSource moveBallSound;
     private void Start()
     {
         ballMoving = false;
+        ballSoundStops = true;
+        moveBallSound = gameObject.GetComponent<AudioSource>();
     }
     public void MoveBall()
     {
@@ -29,6 +34,11 @@ public class Ball : MonoBehaviour
         ball.AddForce(moveVec);
         //--
         ballMoving = true;
+
+        if (!ballSoundStops)
+        {
+            moveBallSound.Play();
+        }
     }
     public void FixedUpdate()
     {
@@ -38,6 +48,7 @@ public class Ball : MonoBehaviour
         {
             if (!ballMoving)
             {
+                ballSoundStops = false;
                 MoveBall();
             }
             actualForce = forceApliedX;
@@ -55,12 +66,12 @@ public class Ball : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            if(forceApliedX <= forceLimit && handleForce)
+            if (forceApliedX <= forceLimit && handleForce)
                 forceApliedX += forceMultipler * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            if(forceApliedX > 0 && handleForce)
+            if (forceApliedX > 0 && handleForce)
                 forceApliedX -= forceMultipler * Time.deltaTime;
         }
         if (Input.GetKeyDown(KeyCode.Space))
@@ -73,5 +84,7 @@ public class Ball : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         ballFocusCamera.followBall = false;
+        moveBallSound.loop = false;
+        ballSoundStops = true;
     }
 }
