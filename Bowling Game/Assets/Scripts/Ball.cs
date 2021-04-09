@@ -4,54 +4,69 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    [SerializeField] float ballSpeed;
+    [SerializeField] public float ballSpeed;
     [SerializeField] Rigidbody ball;
-    [SerializeField] int forceMultipler;
+    [SerializeField] public int forceMultipler;
     [SerializeField] private float actualForce;
 
     [SerializeField] FocusBall ballFocusCamera;
     [SerializeField] public bool onPrepareShoot;
+    [SerializeField] float speedPreShoot;
+
+    [SerializeField] public float forceLimit;
+    [SerializeField] public bool handleForce; //Lets the player choose if want control the force that throws the ball, if false will be random.
 
     public float forceApliedX = 0;
-    private float forceApliedZ = 0;
-    public void PreMoveBall()
+    public bool ballMoving;
+    private void Start()
     {
-        Vector3 moveVec = new Vector3(0, 0, forceApliedZ);
-        //--
-        ball.AddForce(moveVec);
+        ballMoving = false;
     }
     public void MoveBall()
     {
         Vector3 moveVec = new Vector3(forceApliedX, 0, 0);
         //--
         ball.AddForce(moveVec);
+        //--
+        ballMoving = true;
     }
-    public void Update()
+    public void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (onPrepareShoot)
+            OnPrepareShoot();
+        else
         {
-            forceApliedX += forceMultipler * Time.deltaTime;
+            if (!ballMoving)
+            {
+                MoveBall();
+            }
+            actualForce = forceApliedX;
         }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            forceApliedX -= forceMultipler * Time.deltaTime;
-        }
+    }
+    public void OnPrepareShoot()
+    {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            forceApliedZ += 100 * Time.deltaTime;
+            transform.position -= new Vector3(0, 0, speedPreShoot * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            forceApliedZ -= 100 * Time.deltaTime;
+            transform.position += new Vector3(0, 0, speedPreShoot * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            if(forceApliedX <= forceLimit && handleForce)
+                forceApliedX += forceMultipler * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            if(forceApliedX > 0 && handleForce)
+                forceApliedX -= forceMultipler * Time.deltaTime;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             onPrepareShoot = false;
             ballFocusCamera.followBall = true;
-            if(!onPrepareShoot)
-                MoveBall();
         }
-        PreMoveBall();
-        actualForce = forceApliedX;
     }
 }
