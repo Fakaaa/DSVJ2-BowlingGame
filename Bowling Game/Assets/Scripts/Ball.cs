@@ -12,7 +12,7 @@ public class Ball : MonoBehaviour
     [SerializeField] FocusBall ballFocusCamera;
     [SerializeField] public bool onPrepareShoot;
 
-    private float forceApliedX = 0;
+    public float forceApliedX = 0;
     private float forceApliedZ = 0;
     public void PreMoveBall()
     {
