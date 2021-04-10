@@ -5,16 +5,15 @@ using UnityEngine;
 public class InitScenario : MonoBehaviour
 {
     [SerializeField] GameObject prefabKegels;
-    [SerializeField] GameObject prefabBall;
     [SerializeField] GameObject floor;
 
-    void Start()
+    [HideInInspector]
+    public GameObject kegelsGroup;
+    [HideInInspector]
+    public GameObject scenario;
+    void Awake()
     {
-        
-    }
-
-    void Update()
-    {
-        
+        kegelsGroup = Instantiate(prefabKegels);
+        scenario = Instantiate(floor);
     }
 }

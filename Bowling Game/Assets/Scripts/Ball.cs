@@ -22,7 +22,7 @@ public class Ball : MonoBehaviour
     public float forceApliedX = 0;
     public bool ballMoving;
     public bool ballSoundStops;
-    [SerializeField] public Vector3 initialTransfomr;
+    private Vector3 initialTransfomr;
     private void Start()
     {
         initialTransfomr = gameObject.transform.position;
