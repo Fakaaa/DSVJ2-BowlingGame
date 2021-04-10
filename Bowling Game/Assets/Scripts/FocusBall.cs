@@ -8,11 +8,13 @@ public class FocusBall : MonoBehaviour
     [SerializeField] Vector3 offset;
     [SerializeField] public bool followBall;
 
+    private Vector3 initialPosCamera;
     private float timer;
     public Vector3 toMove;
     private void Start()
     {
         toMove = ball.transform.position - offset;
+        initialPosCamera = transform.position;
     }
     void LateUpdate()
     {
@@ -22,5 +24,9 @@ public class FocusBall : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, toMove, 10 * Time.deltaTime);
         }
+    }
+    public void ResetCameraPos()
+    {
+        transform.position = initialPosCamera;
     }
 }

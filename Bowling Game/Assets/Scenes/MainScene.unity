@@ -1000,6 +1000,7 @@ MonoBehaviour:
   speedPreShoot: -1
   forceLimit: 55000
   handleForce: 0
+  timeUntilResetIfNotHit: 5
   forceApliedX: 0
   ballMoving: 0
   ballSoundStops: 0

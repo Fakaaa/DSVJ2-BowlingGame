@@ -16,34 +16,28 @@ public class Ball : MonoBehaviour
 
     [SerializeField] public float forceLimit;
     [SerializeField] public bool handleForce; //Lets the player choose if want control the force that throws the ball, if false will be random.
+    [SerializeField] public float timeUntilResetIfNotHit;
+    [SerializeField] public float timer;
 
     public float forceApliedX = 0;
     public bool ballMoving;
     public bool ballSoundStops;
+    [SerializeField] public Vector3 initialTransfomr;
     private void Start()
     {
+        initialTransfomr = gameObject.transform.position;
         ballMoving = false;
         ballSoundStops = true;
     }
-    public void MoveBall()
-    {
-        Vector3 moveVec = new Vector3(forceApliedX, 0, 0);
-        //--
-        ball.AddForce(moveVec);
-        //--
-        ballMoving = true;
-
-        if (!ballSoundStops)
-        {
-            //FindObjectOfType<AudioManager>().Stop("INITROLL");
-            FindObjectOfType<AudioManager>().Play("INROLL");
-        }
-    }
-
     public void Update()
     {
         if (onPrepareShoot)
             OnPrepareShoot();
+
+        if (!onPrepareShoot)
+            timer += Time.deltaTime;
+        if (timer >= timeUntilResetIfNotHit)
+            ResetBall();
     }
     public void FixedUpdate()
     {
@@ -56,6 +50,19 @@ public class Ball : MonoBehaviour
                 MoveBall();
             }
             actualForce = forceApliedX;
+        }
+    }
+    public void MoveBall()
+    {
+        Vector3 moveVec = new Vector3(forceApliedX, 0, 0);
+        //--
+        ball.AddForce(moveVec);
+        //--
+        ballMoving = true;
+
+        if (!ballSoundStops)
+        {
+            FindObjectOfType<AudioManager>().Play("INROLL");
         }
     }
     public void OnPrepareShoot()
@@ -85,11 +92,23 @@ public class Ball : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("INITROLL");
         }
     }
-
     private void OnTriggerEnter(Collider other)
     {
         ballFocusCamera.followBall = false;
         ballSoundStops = true;
         FindObjectOfType<AudioManager>().Stop("INROLL");
+    }
+    public void ResetBall()
+    {
+        ballFocusCamera.followBall = false;
+        ballFocusCamera.ResetCameraPos();
+        gameObject.transform.position = new Vector3(initialTransfomr.x, initialTransfomr.y ,initialTransfomr.z);
+        ball.angularVelocity = Vector3.zero;
+        ball.velocity = Vector3.zero;
+        ballMoving = false;
+        ballSoundStops = true;
+        forceApliedX = 0;
+        onPrepareShoot = true;
+        timer = 0;
     }
 }

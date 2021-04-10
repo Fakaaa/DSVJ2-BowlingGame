@@ -7,6 +7,7 @@ TagManager:
   - StopCamera
   - Ball
   - Floor
+  - ResetBall
   layers:
   - Default
   - TransparentFX
