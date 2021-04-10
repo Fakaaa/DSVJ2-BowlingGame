@@ -39,11 +39,16 @@ public class Ball : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("INROLL");
         }
     }
-    public void FixedUpdate()
+
+    public void Update()
     {
         if (onPrepareShoot)
             OnPrepareShoot();
-        else
+    }
+    public void FixedUpdate()
+    {
+
+        if (!onPrepareShoot)
         {
             if (!ballMoving)
             {
