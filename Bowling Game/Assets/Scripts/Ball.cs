@@ -20,12 +20,10 @@ public class Ball : MonoBehaviour
     public float forceApliedX = 0;
     public bool ballMoving;
     public bool ballSoundStops;
-    private AudioSource moveBallSound;
     private void Start()
     {
         ballMoving = false;
         ballSoundStops = true;
-        moveBallSound = gameObject.GetComponent<AudioSource>();
     }
     public void MoveBall()
     {
@@ -37,7 +35,8 @@ public class Ball : MonoBehaviour
 
         if (!ballSoundStops)
         {
-            moveBallSound.Play();
+            //FindObjectOfType<AudioManager>().Stop("INITROLL");
+            FindObjectOfType<AudioManager>().Play("INROLL");
         }
     }
     public void FixedUpdate()
@@ -78,13 +77,14 @@ public class Ball : MonoBehaviour
         {
             onPrepareShoot = false;
             ballFocusCamera.followBall = true;
+            FindObjectOfType<AudioManager>().Play("INITROLL");
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         ballFocusCamera.followBall = false;
-        moveBallSound.loop = false;
         ballSoundStops = true;
+        FindObjectOfType<AudioManager>().Stop("INROLL");
     }
 }
