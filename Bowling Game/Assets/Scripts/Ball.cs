@@ -26,12 +26,20 @@ public class Ball : MonoBehaviour
     public bool ballMoving;
     public bool ballSoundStops;
     private Vector3 initialTransfomr;
+
+    [SerializeField] float limitValueRight;
+    [SerializeField] float limitValueLeft;
+    [SerializeField] float speedBallSides;
+    private bool leftSide;
+    private bool rightSide;
+
     private void Start()
     {
         initialTransfomr = gameObject.transform.position;
         ballMoving = false;
         ballSoundStops = true;
-
+        leftSide = true;
+        rightSide = false;
         shootsAvaible = maxShoots;
     }
     public void Update()
@@ -75,11 +83,13 @@ public class Ball : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.position -= new Vector3(0, 0, speedPreShoot * Time.deltaTime);
+            if(handleForce)
+                transform.position -= new Vector3(0, 0, speedPreShoot * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.position += new Vector3(0, 0, speedPreShoot * Time.deltaTime);
+            if(handleForce)
+                transform.position += new Vector3(0, 0, speedPreShoot * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
@@ -96,6 +106,29 @@ public class Ball : MonoBehaviour
             onPrepareShoot = false;
             ballFocusCamera.followBall = true;
             FindObjectOfType<AudioManager>().Play("INITROLL");
+        }
+
+        if(!handleForce)
+        {
+            if (rightSide)
+                transform.position -= new Vector3(0, 0, speedBallSides * Time.deltaTime);
+            if (leftSide)
+                transform.position += new Vector3(0, 0, speedBallSides * Time.deltaTime);
+
+            if (transform.position.z > -limitValueRight && !rightSide)
+            {
+                rightSide = false;
+                leftSide = true;
+            }
+            else
+                leftSide = false;
+            if (transform.position.z < -limitValueLeft && !leftSide)
+            {
+                leftSide = false;
+                rightSide = true;
+            }
+            else
+                rightSide = false;
         }
     }
     private void OnTriggerEnter(Collider other)
