@@ -39,6 +39,7 @@ public class PrepareShoot : MonoBehaviour
             else
                 goingDown = false;
         }
-        sliderUI.value = ballForce.forceApliedX;
+        if(ballForce.shootsAvaible > 0)
+            sliderUI.value = ballForce.forceApliedX;
     }
 }

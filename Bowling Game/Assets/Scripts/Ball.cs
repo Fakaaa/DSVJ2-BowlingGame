@@ -19,6 +19,9 @@ public class Ball : MonoBehaviour
     [SerializeField] public float timeUntilResetIfNotHit;
     [SerializeField] public float timer;
 
+    [SerializeField] public int shootsAvaible;
+    [SerializeField] public int maxShoots;
+
     public float forceApliedX = 0;
     public bool ballMoving;
     public bool ballSoundStops;
@@ -28,10 +31,12 @@ public class Ball : MonoBehaviour
         initialTransfomr = gameObject.transform.position;
         ballMoving = false;
         ballSoundStops = true;
+
+        shootsAvaible = maxShoots;
     }
     public void Update()
     {
-        if (onPrepareShoot)
+        if (onPrepareShoot && shootsAvaible > 0)
             OnPrepareShoot();
 
         if (!onPrepareShoot)
@@ -44,10 +49,11 @@ public class Ball : MonoBehaviour
 
         if (!onPrepareShoot)
         {
-            if (!ballMoving)
+            if (!ballMoving && shootsAvaible > 0)
             {
                 ballSoundStops = false;
                 MoveBall();
+                shootsAvaible--;
             }
             actualForce = forceApliedX;
         }
@@ -78,12 +84,12 @@ public class Ball : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             if (forceApliedX <= forceLimit && handleForce)
-                forceApliedX += forceMultipler * Time.deltaTime;
+                forceApliedX += (forceMultipler * 6) * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
             if (forceApliedX > 0 && handleForce)
-                forceApliedX -= forceMultipler * Time.deltaTime;
+                forceApliedX -= (forceMultipler * 6) * Time.deltaTime;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {

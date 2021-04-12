@@ -8,6 +8,7 @@ TagManager:
   - Ball
   - Floor
   - ResetBall
+  - Kegel
   layers:
   - Default
   - TransparentFX

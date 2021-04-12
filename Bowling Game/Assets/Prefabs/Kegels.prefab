@@ -58,6 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitByBall: 0
+  kegelDown: 0
 --- !u!1 &9207196720067352963
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,16 +87,16 @@ Transform:
   m_LocalPosition: {x: 19, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 9207196721182872475}
   - {fileID: 9207196721293971481}
+  - {fileID: 8298857028007104149}
   - {fileID: 9207196719858758377}
-  - {fileID: 9207196720705752410}
   - {fileID: 9207196721106996707}
+  - {fileID: 9207196720705752410}
   - {fileID: 9207196720161283713}
   - {fileID: 9207196719810612066}
   - {fileID: 9207196721116622088}
   - {fileID: 9207196720610578010}
-  - {fileID: 9207196721182872475}
-  - {fileID: 8298857028007104149}
   - {fileID: 8248899062031134836}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -113,15 +114,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kegels:
-  - {fileID: 9207196721293691353}
-  - {fileID: 9207196719859034921}
-  - {fileID: 9207196720705475738}
-  - {fileID: 9207196721107244067}
-  - {fileID: 9207196720161523521}
-  - {fileID: 9207196719810368162}
-  - {fileID: 9207196721116378312}
-  - {fileID: 9207196720610858906}
-  - {fileID: 9207196721182624347}
+  - {fileID: 7380374072263797437}
+  - {fileID: 7380374072353892671}
+  - {fileID: 7674597484570113971}
+  - {fileID: 7380374073653906383}
+  - {fileID: 7380374072205456581}
+  - {fileID: 7380374072875070588}
+  - {fileID: 7380374073419540391}
+  - {fileID: 7380374073567769156}
+  - {fileID: 7380374072195699758}
+  - {fileID: 7380374072767870844}
   kegelsHit: {fileID: 6178170691451111919}
 --- !u!1001 &8298857028006737833
 PrefabInstance:
@@ -132,11 +134,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_Name
-      value: Kegel 10
+      value: Kegel_3
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -178,6 +180,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
+        type: 3}
+      propertyPath: Name
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
 --- !u!4 &8298857028007104149 stripped
@@ -186,6 +193,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8298857028006737833}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7674597484570113971 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8298857028006737833}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae55b07e80254840a91a4a28c933a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9207196719810507358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -195,11 +214,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_Name
-      value: Kegel 6
+      value: Kegel_8
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -241,20 +260,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
+        type: 3}
+      propertyPath: Name
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
---- !u!1 &9207196719810368162 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a,
-    type: 3}
-  m_PrefabInstance: {fileID: 9207196719810507358}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9207196719810612066 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a,
     type: 3}
   m_PrefabInstance: {fileID: 9207196719810507358}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7380374073567769156 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 9207196719810507358}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae55b07e80254840a91a4a28c933a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9207196719858895829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -264,11 +294,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_Name
-      value: Kegel 2
+      value: Kegel_4
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -310,20 +340,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
+        type: 3}
+      propertyPath: Name
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
---- !u!1 &9207196719859034921 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a,
-    type: 3}
-  m_PrefabInstance: {fileID: 9207196719858895829}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9207196719858758377 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a,
     type: 3}
   m_PrefabInstance: {fileID: 9207196719858895829}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7380374073653906383 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 9207196719858895829}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae55b07e80254840a91a4a28c933a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9207196720161400765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -333,11 +374,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_Name
-      value: Kegel 5
+      value: Kegel_7
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -379,14 +420,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
+        type: 3}
+      propertyPath: Name
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
---- !u!1 &9207196720161523521 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a,
+--- !u!114 &7380374073419540391 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
     type: 3}
   m_PrefabInstance: {fileID: 9207196720161400765}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae55b07e80254840a91a4a28c933a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &9207196720161283713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a,
@@ -402,11 +454,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_Name
-      value: Kegel 8
+      value: Kegel_10
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -448,20 +500,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
+        type: 3}
+      propertyPath: Name
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
---- !u!1 &9207196720610858906 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a,
-    type: 3}
-  m_PrefabInstance: {fileID: 9207196720610735974}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9207196720610578010 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a,
     type: 3}
   m_PrefabInstance: {fileID: 9207196720610735974}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7380374072767870844 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 9207196720610735974}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae55b07e80254840a91a4a28c933a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9207196720705352806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -471,11 +534,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_Name
-      value: Kegel 3
+      value: Kegel_6
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -517,14 +580,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
+        type: 3}
+      propertyPath: Name
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
---- !u!1 &9207196720705475738 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a,
+--- !u!114 &7380374072875070588 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
     type: 3}
   m_PrefabInstance: {fileID: 9207196720705352806}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae55b07e80254840a91a4a28c933a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &9207196720705752410 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a,
@@ -540,11 +614,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_Name
-      value: Kegel 4
+      value: Kegel_5
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -586,14 +660,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
+        type: 3}
+      propertyPath: Name
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
---- !u!1 &9207196721107244067 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a,
+--- !u!114 &7380374072205456581 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
     type: 3}
   m_PrefabInstance: {fileID: 9207196721107383519}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae55b07e80254840a91a4a28c933a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &9207196721106996707 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a,
@@ -609,11 +694,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_Name
-      value: Kegel 7
+      value: Kegel_9
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -655,6 +740,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
+        type: 3}
+      propertyPath: Name
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
 --- !u!4 &9207196721116622088 stripped
@@ -663,12 +753,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 9207196721116501044}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &9207196721116378312 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a,
+--- !u!114 &7380374072195699758 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
     type: 3}
   m_PrefabInstance: {fileID: 9207196721116501044}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae55b07e80254840a91a4a28c933a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9207196721182501543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -678,11 +774,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_Name
-      value: Kegel 9
+      value: Kegel_1
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -724,20 +820,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
+        type: 3}
+      propertyPath: Name
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
---- !u!1 &9207196721182624347 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a,
-    type: 3}
-  m_PrefabInstance: {fileID: 9207196721182501543}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9207196721182872475 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a,
     type: 3}
   m_PrefabInstance: {fileID: 9207196721182501543}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7380374072263797437 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 9207196721182501543}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae55b07e80254840a91a4a28c933a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9207196721293568293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -747,11 +854,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_Name
-      value: Kegel 1
+      value: Kegel_2
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -793,17 +900,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
+        type: 3}
+      propertyPath: Name
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4246925f0393c430189bb4ceba36dc8a, type: 3}
---- !u!1 &9207196721293691353 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 139516, guid: 4246925f0393c430189bb4ceba36dc8a,
-    type: 3}
-  m_PrefabInstance: {fileID: 9207196721293568293}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9207196721293971481 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a,
     type: 3}
   m_PrefabInstance: {fileID: 9207196721293568293}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7380374072353892671 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 9207196721293568293}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae55b07e80254840a91a4a28c933a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

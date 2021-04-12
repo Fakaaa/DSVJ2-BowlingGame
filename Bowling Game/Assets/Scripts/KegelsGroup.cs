@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Kegels : MonoBehaviour
+public class KegelsGroup : MonoBehaviour
 {
     public bool hitByBall;
-    // Start is called before the first frame update
     void Awake()
     {
         hitByBall = false;
