@@ -8,23 +8,28 @@ public class UI_World : MonoBehaviour
     [SerializeField] Text points;
     [SerializeField] Text kegelsRemaining;
 
-    [SerializeField] Ball balInfo;
+    [SerializeField] Ball ballInfo;
     [SerializeField] KegelsManager kegelsinfo;
 
     [SerializeField] Text endMatch;
+
+    [HideInInspector]
+    public bool endGame = false;
     void Update()
     {
         points.text = "Points: " + kegelsinfo.pointsGained;
-        shootsRemaining.text = "Shoots \n" + balInfo.shootsAvaible;
+        shootsRemaining.text = "Shoots \n" + ballInfo.shootsAvaible;
         kegelsRemaining.text = "Kegels Remaining \n" + (kegelsinfo.kegelsGroup.kegels.Length - kegelsinfo.kegelsDown).ToString();
 
-        if (balInfo.shootsAvaible <= 0 && (kegelsinfo.kegelsGroup.kegels.Length - kegelsinfo.kegelsDown) >= 1)
+        if (ballInfo.shootsAvaible == 0 && (kegelsinfo.kegelsGroup.kegels.Length - kegelsinfo.kegelsDown) >= 1)
         {
             endMatch.text = "You Lose! You dont have more shoots. \n Remaining Kegels: " + (kegelsinfo.kegelsGroup.kegels.Length - kegelsinfo.kegelsDown);
+            endGame = true;
         }
-        else if(balInfo.shootsAvaible >= 1 && (kegelsinfo.kegelsGroup.kegels.Length - kegelsinfo.kegelsDown) <= 0)
+        else if(ballInfo.shootsAvaible >= 0 && (kegelsinfo.kegelsGroup.kegels.Length - kegelsinfo.kegelsDown) <= 0)
         {
             endMatch.text = "You Win! \n Final Points: " + kegelsinfo.pointsGained;
+            endGame = true;
         }
     }
 }

@@ -33,6 +33,7 @@ public class Ball : MonoBehaviour
     private bool leftSide;
     private bool rightSide;
 
+    [SerializeField] UI_World uiHandle;
     private void Start()
     {
         initialTransfomr = gameObject.transform.position;
@@ -44,18 +45,23 @@ public class Ball : MonoBehaviour
     }
     public void Update()
     {
-        if (onPrepareShoot && shootsAvaible > 0)
+        if (onPrepareShoot && shootsAvaible > 0 && !uiHandle.endGame)
             OnPrepareShoot();
 
         if (!onPrepareShoot)
             timer += Time.deltaTime;
         if (timer >= timeUntilResetIfNotHit)
             ResetBall();
+
+        if(Input.GetKey(KeyCode.R))
+        {
+            ResetBall();
+        }
     }
     public void FixedUpdate()
     {
 
-        if (!onPrepareShoot)
+        if (!onPrepareShoot && !uiHandle.endGame)
         {
             if (!ballMoving && shootsAvaible > 0)
             {
