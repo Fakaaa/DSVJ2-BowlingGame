@@ -1076,10 +1076,10 @@ MonoBehaviour:
     type: 3}
   kegelsGroup: {fileID: 0}
   kegelsDown: 0
-  timeUntilKegelDisable: 1.5
+  timeUntilKegelDisable: 1
   pointsGained: 0
-  multiplerPoints: 1
   playerInfo: {fileID: 1909159233}
+  multiplerPointsPerStrike: 10
 --- !u!1 &1628185836
 GameObject:
   m_ObjectHideFlags: 0

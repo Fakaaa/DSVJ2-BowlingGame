@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KegelsManager : MonoBehaviour
 {
+
     [SerializeField] CheckKegels kegeslPrefaGroup;
     [SerializeField] public CheckKegels kegelsGroup;
 
@@ -11,9 +12,9 @@ public class KegelsManager : MonoBehaviour
     [SerializeField] public float timeUntilKegelDisable;
 
     [SerializeField] public int pointsGained;
-    [SerializeField] public int multiplerPoints;
 
     [SerializeField] private Ball playerInfo;
+    [SerializeField] private int multiplerPointsPerStrike;
     void Awake()
     {
         kegelsGroup = Instantiate(kegeslPrefaGroup);
@@ -22,6 +23,11 @@ public class KegelsManager : MonoBehaviour
     void Update()
     {
         kegelsDown = kegelsGroup.amountDown;
+        pointsGained = kegelsGroup.pointsToTransfer;
+
+        if (playerInfo.shootsAvaible == playerInfo.maxShoots - 1 && kegelsDown == kegelsGroup.kegels.Length)
+            kegelsGroup.multiplerPoints = multiplerPointsPerStrike;
+
 
         for (int i = 0; i < kegelsGroup.kegels.Length; i++)
         {
@@ -33,9 +39,6 @@ public class KegelsManager : MonoBehaviour
 
                     if (kegelsGroup.kegels[i].timerDown >= timeUntilKegelDisable && kegelsGroup.kegels[i].gameObject.activeSelf)
                     {
-                        pointsGained += kegelsGroup.kegels[i].pointsValue * multiplerPoints;
-                        if(playerInfo.shootsAvaible == playerInfo.maxShoots - 1)
-                            multiplerPoints+=2;
                         kegelsGroup.kegels[i].gameObject.SetActive(false);
                     }
                 }

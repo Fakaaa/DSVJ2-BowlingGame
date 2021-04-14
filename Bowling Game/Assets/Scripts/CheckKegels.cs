@@ -8,11 +8,16 @@ public class CheckKegels : MonoBehaviour
 {
     [SerializeField] public KegelClass[] kegels;
     [SerializeField] KegelsGroup kegelsHit;
+    [SerializeField] public int multiplerPoints;
 
+    [SerializeField] public int pointsToTransfer;
     public int amountDown;
     const float maxRotation = 0.35f;
     private void Update()
     {
+        amountDown = 0;
+        pointsToTransfer = 0;
+
         if (kegelsHit.hitByBall)
         {
             FindObjectOfType<AudioManager>().Play("HIT");
@@ -27,10 +32,13 @@ public class CheckKegels : MonoBehaviour
                     kegels[i].transform.rotation.z >= maxRotation || kegels[i].transform.rotation.z <= -maxRotation) )
                 {
                     kegels[i].isDown = true;
+                }
+                else if(kegels[i].isDown)
+                {
+                    pointsToTransfer += kegels[i].pointsValue * multiplerPoints;
                     amountDown++;
                 }
             }
-            //Debug.Log("Error: No se encontraron los kegels.");
         }
     }
 }
