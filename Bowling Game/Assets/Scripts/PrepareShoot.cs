@@ -7,7 +7,6 @@ public class PrepareShoot : MonoBehaviour
 {
     [SerializeField] Slider sliderUI;
     [SerializeField] Ball ballForce;
-    [SerializeField] UI_World uiWorld;
 
     private bool goingUp;
     private bool goingDown;
@@ -40,7 +39,7 @@ public class PrepareShoot : MonoBehaviour
             else
                 goingDown = false;
         }
-        if(ballForce.shootsAvaible > 0 && !uiWorld.endGame)
+        if(ballForce.shootsAvaible > 0 && !GameManager.Get().GetIfMatchEnds())
             sliderUI.value = ballForce.forceApliedX;
     }
 }

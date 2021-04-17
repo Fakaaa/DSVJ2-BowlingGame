@@ -9,7 +9,6 @@ public class FocusBall : MonoBehaviour
     [SerializeField] public bool followBall;
 
     private Vector3 initialPosCamera;
-    private float timer;
     public Vector3 toMove;
     private void Start()
     {

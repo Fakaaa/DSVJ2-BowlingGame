@@ -8,24 +8,34 @@ public class KegelsManager : MonoBehaviour
     [SerializeField] CheckKegels kegeslPrefaGroup;
     [SerializeField] public CheckKegels kegelsGroup;
 
-    [SerializeField] public int kegelsDown;
     [SerializeField] public float timeUntilKegelDisable;
 
-    [SerializeField] public int pointsGained;
-
     [SerializeField] private Ball playerInfo;
-    [SerializeField] private int multiplerPointsPerStrike;
+    [SerializeField] private int multiplerPointsPerStrike = 1;
     void Awake()
     {
         kegelsGroup = Instantiate(kegeslPrefaGroup);
     }
 
+    public void Reinstaciate()
+    {
+        if(kegelsGroup != null)
+        {
+            Destroy(kegelsGroup.gameObject);
+            kegelsGroup = Instantiate(kegeslPrefaGroup);
+        }
+        else
+        {
+            kegelsGroup = Instantiate(kegeslPrefaGroup);
+        }
+    }
+
     void Update()
     {
-        kegelsDown = kegelsGroup.amountDown;
-        pointsGained = kegelsGroup.pointsToTransfer;
+        GameManager.Get().AddScore(kegelsGroup.pointsToTransfer);
+        GameManager.Get().KegelsDown(kegelsGroup.amountDown);
 
-        if (playerInfo.shootsAvaible == playerInfo.maxShoots - 1 && kegelsDown == kegelsGroup.kegels.Length)
+        if (playerInfo.shootsAvaible == playerInfo.maxShoots - 1 && GameManager.Get().GetKegels() == kegelsGroup.kegels.Length)
             kegelsGroup.multiplerPoints = multiplerPointsPerStrike;
 
 

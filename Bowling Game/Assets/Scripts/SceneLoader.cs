@@ -7,14 +7,28 @@ public class SceneLoader : MonoBehaviour
 {
     public Animator transition;
     public float transitionTime = 1f;
+
+    public int actualScene;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            LoadNextLevel();
-        }
+        //if (Input.GetMouseButtonDown(0) && !transition.GetBool("NextScene"))
+        //{
+        //    LoadNextLevel();
+        //}
+        actualScene = SceneManager.GetActiveScene().buildIndex;
     }
 
+    public void LoadNextLevelCustom(int levelIndex)
+    {
+        if(levelIndex <= SceneManager.sceneCountInBuildSettings && levelIndex >= 0)
+            StartCoroutine(LoadLevel(levelIndex));
+
+        if(levelIndex == 0) // Main menu
+        {
+            GameManager.Get().SetResetAll(true);
+            GameManager.Get().EndMatch(false);
+        }
+    }
     public void LoadNextLevel()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
@@ -22,12 +36,12 @@ public class SceneLoader : MonoBehaviour
 
     IEnumerator LoadLevel(int indexScene)
     {
-        if (indexScene < 2)
-            transition.SetTrigger("Start");
+        transition.SetBool("NextScene", true);
 
         yield return new WaitForSeconds(transitionTime);
 
-        if(indexScene < 2)
-            SceneManager.LoadScene(indexScene);
+        SceneManager.LoadScene(indexScene);
+
+        transition.SetBool("NextScene", false);
     }
 }

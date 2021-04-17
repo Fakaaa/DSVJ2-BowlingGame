@@ -14,22 +14,23 @@ public class UI_World : MonoBehaviour
     [SerializeField] Text endMatch;
 
     [HideInInspector]
-    public bool endGame = false;
-    void Update()
+    void LateUpdate()
     {
-        points.text = "Points: " + kegelsinfo.pointsGained;
+        points.text = "Points: " + GameManager.Get().GetScore();
         shootsRemaining.text = "Shoots \n" + ballInfo.shootsAvaible;
-        kegelsRemaining.text = "Kegels Remaining \n" + (kegelsinfo.kegelsGroup.kegels.Length - kegelsinfo.kegelsDown).ToString();
+        kegelsRemaining.text = "Kegels Remaining \n" + (kegelsinfo.kegelsGroup.kegels.Length - GameManager.Get().GetKegels()).ToString();
 
-        if (ballInfo.shootsAvaible == 0 && (kegelsinfo.kegelsGroup.kegels.Length - kegelsinfo.kegelsDown) >= 1)
+        if (ballInfo.shootsAvaible == 0 && (kegelsinfo.kegelsGroup.kegels.Length - GameManager.Get().GetKegels()) >= 1)
         {
-            endMatch.text = "You Lose! You dont have more shoots. \n Remaining Kegels: " + (kegelsinfo.kegelsGroup.kegels.Length - kegelsinfo.kegelsDown);
-            endGame = true;
+            GameManager.Get().PlayerState(GameManager.EndState.Lose);
+            //endMatch.text = "You Lose! You dont have more shoots. \n Remaining Kegels: " + (kegelsinfo.kegelsGroup.kegels.Length - GameManager.Get().GetKegels());   
+            GameManager.Get().EndMatch(true);
         }
-        else if(ballInfo.shootsAvaible >= 0 && (kegelsinfo.kegelsGroup.kegels.Length - kegelsinfo.kegelsDown) <= 0)
+        else if(ballInfo.shootsAvaible >= 0 && (kegelsinfo.kegelsGroup.kegels.Length - GameManager.Get().GetKegels()) <= 0)
         {
-            endMatch.text = "You Win! \n Final Points: " + kegelsinfo.pointsGained;
-            endGame = true;
+            GameManager.Get().PlayerState(GameManager.EndState.Win);
+            //endMatch.text = "You Win! \n Final Points: " + GameManager.Get().GetScore();
+            GameManager.Get().EndMatch(true);
         }
     }
 }

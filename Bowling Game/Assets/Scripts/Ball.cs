@@ -8,7 +8,6 @@ public class Ball : MonoBehaviour
     [SerializeField] public float ballSpeed;
     [SerializeField] Rigidbody ball;
     [SerializeField] public int forceMultipler;
-    [SerializeField] private float actualForce;
 
     [SerializeField] FocusBall ballFocusCamera;
     [SerializeField] public bool onPrepareShoot;
@@ -32,8 +31,6 @@ public class Ball : MonoBehaviour
     [SerializeField] float speedBallSides;
     private bool leftSide;
     private bool rightSide;
-
-    [SerializeField] UI_World uiHandle;
     private void Start()
     {
         initialTransfomr = gameObject.transform.position;
@@ -45,23 +42,23 @@ public class Ball : MonoBehaviour
     }
     public void Update()
     {
-        if (onPrepareShoot && shootsAvaible > 0 && !uiHandle.endGame)
+        if (onPrepareShoot && shootsAvaible > 0 && !GameManager.Get().GetIfMatchEnds())
             OnPrepareShoot();
 
         if (!onPrepareShoot)
             timer += Time.deltaTime;
         if (timer >= timeUntilResetIfNotHit)
-            ResetBall();
+            Respawn();
 
         if(Input.GetKey(KeyCode.R))
         {
-            ResetBall();
+            Respawn();
         }
     }
     public void FixedUpdate()
     {
 
-        if (!onPrepareShoot && !uiHandle.endGame)
+        if (!onPrepareShoot && !GameManager.Get().GetIfMatchEnds())
         {
             if (!ballMoving && shootsAvaible > 0)
             {
@@ -69,7 +66,6 @@ public class Ball : MonoBehaviour
                 MoveBall();
                 shootsAvaible--;
             }
-            actualForce = forceApliedX;
         }
     }
     public void MoveBall()
@@ -143,7 +139,7 @@ public class Ball : MonoBehaviour
         ballSoundStops = true;
         FindObjectOfType<AudioManager>().Stop("INROLL");
     }
-    public void ResetBall()
+    public void Respawn()
     {
         ballFocusCamera.followBall = false;
         ballFocusCamera.ResetCameraPos();
@@ -154,6 +150,22 @@ public class Ball : MonoBehaviour
         ballSoundStops = true;
         forceApliedX = 0;
         onPrepareShoot = true;
+        timer = 0;
+    }
+    public void ResetAllValues()
+    {
+        ballFocusCamera.ResetCameraPos();
+        gameObject.transform.position = new Vector3(initialTransfomr.x, initialTransfomr.y, initialTransfomr.z);
+        ball.angularVelocity = Vector3.zero;
+        ball.velocity = Vector3.zero;
+        ballFocusCamera.followBall = false;
+        ballMoving = false;
+        ballSoundStops = true;
+        leftSide = true;
+        rightSide = false;
+        onPrepareShoot = true; 
+        shootsAvaible = maxShoots;
+        forceApliedX = 0;
         timer = 0;
     }
 }
