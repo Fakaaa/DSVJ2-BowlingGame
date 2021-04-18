@@ -10,6 +10,7 @@ public class ShootToKegels : MonoBehaviour
     [SerializeField] private float maxDistance;
 
     [SerializeField] private GameObject crossFire;
+    [SerializeField] private int offsetCrossfire;
 
     [SerializeField] float explosionForce;
     [SerializeField] int amountPinesExplode;
@@ -31,25 +32,35 @@ public class ShootToKegels : MonoBehaviour
 
         ray = toLookAt.ScreenPointToRay(mousePosition);
         Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.green);
-        crossFire.transform.position = ray.origin + (ray.direction * (maxDistance - 3));    //Corssfire (Scope)
+        crossFire.transform.position = ray.origin + (ray.direction * (maxDistance - offsetCrossfire));    //Corssfire (Scope)
 
         if(Input.GetMouseButtonDown(0))
         {
             if (Physics.Raycast(ray, out my_Hit, maxDistance))
             {
-                Rigidbody my_RigidHit = my_Hit.collider.gameObject.GetComponent<Rigidbody>();
-                my_RigidHit.AddExplosionForce(explosionForce, my_Hit.point, 2, 2, ForceMode.Impulse);
-                GameObject explodeEffect = Instantiate(explosionEffectPrefab, my_Hit.transform.position, Quaternion.identity, my_Hit.transform);
-                explodeEffect.GetComponent<ParticleSystem>().Play();
-                for (int i = 0; i < amountPinesExplode; i++)
+                if(my_Hit.collider.tag == "Kegel")
                 {
-                    miniKegels.Add(Instantiate(prefabKegel, my_Hit.transform.position, Quaternion.identity, my_Hit.transform));
-                }
+                    Rigidbody my_RigidHit = my_Hit.collider.gameObject.GetComponent<Rigidbody>();
+                    my_RigidHit.AddExplosionForce(explosionForce, my_Hit.point, 2, 2, ForceMode.Impulse);
+                    GameObject explodeEffect = Instantiate(explosionEffectPrefab, my_Hit.transform.position, Quaternion.identity, my_Hit.transform);
+                    explodeEffect.GetComponent<ParticleSystem>().Play();
+                    for (int i = 0; i < amountPinesExplode; i++)
+                    {
+                        miniKegels.Add(Instantiate(prefabKegel, my_Hit.transform.position, Quaternion.identity, my_Hit.transform));
+                    }
 
-                for (int i = 0; i < miniKegels.Count; i++)
+                    for (int i = 0; i < miniKegels.Count; i++)
+                    {
+                        if(miniKegels[i] != null)
+                        {
+                            miniKegels[i].GetComponent<Rigidbody>().AddExplosionForce(explosionForce, my_Hit.point, 2, 2, ForceMode.Impulse);
+                        }
+                    }
+                }
+                else
                 {
-                    if(miniKegels[i] != null)
-                        miniKegels[i].GetComponent<Rigidbody>().AddExplosionForce(explosionForce, my_Hit.point, 2, 2, ForceMode.Impulse);
+                    GameManager.Get().PlayerState(GameManager.EndState.Lose);
+                    GameManager.Get().EndMatch(true);
                 }
             }
         }
