@@ -193,6 +193,11 @@ PrefabInstance:
       propertyPath: scenesRef
       value: 
       objectReference: {fileID: 514949768}
+    - target: {fileID: 6963471784600742843, guid: 581abc4a540557e42955487194a6a8ab,
+        type: 3}
+      propertyPath: scoreMultipler
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 581abc4a540557e42955487194a6a8ab, type: 3}
 --- !u!1 &126308034
@@ -485,7 +490,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 89ba2babb6d7140db92ff783f8da045e, type: 2}
+  - {fileID: 2100000, guid: c45f66bbde49b5e46a5cd3616bdf73b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2287,7 +2292,11 @@ MonoBehaviour:
   toLookAt: {fileID: 394805478}
   maxDistance: 16
   crossFire: {fileID: 281990177}
-  kegelGet: {fileID: 0}
-  forceUpForPines: 2.5
-  amountPinesExplode: 0
+  explosionForce: 4
+  amountPinesExplode: 6
+  explosionEffectPrefab: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1,
+    type: 3}
   vecUp: {x: 0, y: 0, z: 0}
+  prefabKegel: {fileID: 1849523416192778266, guid: 4246925f0393c430189bb4ceba36dc8a,
+    type: 3}
+  miniKegels: []
