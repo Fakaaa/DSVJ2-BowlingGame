@@ -2288,6 +2288,6 @@ MonoBehaviour:
   maxDistance: 16
   crossFire: {fileID: 281990177}
   kegelGet: {fileID: 0}
-  forceUpForPines: 10
+  forceUpForPines: 2.5
   amountPinesExplode: 0
   vecUp: {x: 0, y: 0, z: 0}

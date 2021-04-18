@@ -24,7 +24,7 @@ public class ShootToKegels : MonoBehaviour
     void Update()
     {
         mousePosition = Input.mousePosition;
-        vecUp = new Vector3(0, forceUpForPines, 0);
+        vecUp = new Vector3(forceUpForPines, forceUpForPines, 0);
 
         ray = toLookAt.ScreenPointToRay(mousePosition);
         Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.green);
