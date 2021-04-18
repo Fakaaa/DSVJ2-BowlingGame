@@ -436,7 +436,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5392812146911961693}
   - component: {fileID: 8324403291518704792}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TriggerCameraFollow
   m_TagString: StopCamera
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8248899062031134836}
   - component: {fileID: 189711456376094395}
   - component: {fileID: 6178170691451111919}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TriggerSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}

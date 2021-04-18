@@ -61,7 +61,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.78983575
+  m_Radius: 0.66
   m_Height: 5.3487244
   m_Direction: 1
   m_Center: {x: 0, y: 2.8395395, z: 0.03424436}
@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDown: 0
   Name: 
+  scale: {x: 0.2, y: 0.2, z: 0.2}
   timerDown: 0
   pointsValue: 100
 --- !u!1 &160396

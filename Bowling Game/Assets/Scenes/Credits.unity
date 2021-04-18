@@ -785,7 +785,9 @@ MonoBehaviour:
     Art: Sounds
 
     Bowling
-    sounds in YouTube'
+    sounds in YouTube
+
+    Particles: EffectExamples by Unity'
 --- !u!222 &1447715536
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -810,7 +812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.12, y: -2.4}
+  m_AnchoredPosition: {x: -2.12, y: -2.11}
   m_SizeDelta: {x: 35, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1684771131
