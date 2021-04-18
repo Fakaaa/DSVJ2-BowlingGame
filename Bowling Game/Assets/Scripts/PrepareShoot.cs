@@ -17,29 +17,39 @@ public class PrepareShoot : MonoBehaviour
     }
     private void Update()
     {
-        if(!ballForce.handleForce && !ballForce.ballMoving)
+        if(!GameManager.Get().onSecondGameMode)
         {
-            if (goingUp)
-                ballForce.forceApliedX += (ballForce.forceMultipler * ballForce.ballSpeed) * Time.deltaTime;
-            if(goingDown)
-                ballForce.forceApliedX -= (ballForce.forceMultipler * ballForce.ballSpeed) * Time.deltaTime;
+            if(!this.gameObject.activeSelf)
+                this.gameObject.SetActive(true);
 
-            if (ballForce.forceApliedX < ballForce.forceLimit && !goingDown)
+            if (!ballForce.handleForce && !ballForce.ballMoving)
             {
-                goingDown = false;
-                goingUp = true;
+                if (goingUp)
+                    ballForce.forceApliedX += (ballForce.forceMultipler * ballForce.ballSpeed) * Time.deltaTime;
+                if(goingDown)
+                    ballForce.forceApliedX -= (ballForce.forceMultipler * ballForce.ballSpeed) * Time.deltaTime;
+
+                if (ballForce.forceApliedX < ballForce.forceLimit && !goingDown)
+                {
+                    goingDown = false;
+                    goingUp = true;
+                }
+                else
+                    goingUp = false;
+                if (ballForce.forceApliedX >= 0 && !goingUp)
+                {
+                    goingUp = false;
+                    goingDown = true;
+                }
+                else
+                    goingDown = false;
             }
-            else
-                goingUp = false;
-            if (ballForce.forceApliedX >= 0 && !goingUp)
-            {
-                goingUp = false;
-                goingDown = true;
-            }
-            else
-                goingDown = false;
+            if(ballForce.shootsAvaible > 0 && !GameManager.Get().GetIfMatchEnds() && !ballForce.shootMode)
+                sliderUI.value = ballForce.forceApliedX;
         }
-        if(ballForce.shootsAvaible > 0 && !GameManager.Get().GetIfMatchEnds() && !ballForce.shootMode)
-            sliderUI.value = ballForce.forceApliedX;
+        else
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 }

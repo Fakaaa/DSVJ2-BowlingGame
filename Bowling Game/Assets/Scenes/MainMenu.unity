@@ -685,7 +685,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1293,7 +1293,7 @@ PrefabInstance:
     - target: {fileID: 3027112565069009265, guid: 6ba00c894dd7b144f88b9541f7b4e303,
         type: 3}
       propertyPath: transitionTime
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3027112565069009266, guid: 6ba00c894dd7b144f88b9541f7b4e303,
         type: 3}
