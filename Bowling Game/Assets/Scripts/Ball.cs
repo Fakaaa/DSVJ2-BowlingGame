@@ -14,7 +14,7 @@ public class Ball : MonoBehaviour
     [SerializeField] float speedPreShoot;
 
     [SerializeField] public float forceLimit;
-    [SerializeField] public bool handleForce; //Lets the player choose if want control the force that throws the ball, if false will be random.
+    [SerializeField] public bool handleForce; //Lets the player choose if want control the force that throws the ball, if false will be an automatic slider.
     [SerializeField] public float timeUntilResetIfNotHit;
     [SerializeField] public float timer;
 
@@ -29,6 +29,9 @@ public class Ball : MonoBehaviour
     [SerializeField] float limitValueRight;
     [SerializeField] float limitValueLeft;
     [SerializeField] float speedBallSides;
+
+    [SerializeField] public bool shootMode;   
+
     private bool leftSide;
     private bool rightSide;
     private void Start()
@@ -42,7 +45,7 @@ public class Ball : MonoBehaviour
     }
     public void Update()
     {
-        if (onPrepareShoot && shootsAvaible > 0 && !GameManager.Get().GetIfMatchEnds())
+        if (onPrepareShoot && shootsAvaible > 0 && !GameManager.Get().GetIfMatchEnds() && !shootMode)
             OnPrepareShoot();
 
         if (!onPrepareShoot)
@@ -60,7 +63,7 @@ public class Ball : MonoBehaviour
 
         if (!onPrepareShoot && !GameManager.Get().GetIfMatchEnds())
         {
-            if (!ballMoving && shootsAvaible > 0)
+            if (!ballMoving && shootsAvaible > 0 && !shootMode)
             {
                 ballSoundStops = false;
                 MoveBall();

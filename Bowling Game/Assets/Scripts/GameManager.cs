@@ -108,11 +108,11 @@ public class GameManager : MonoBehaviour
     {
         state = stateIn;
     }
-    public int GetScore()
+    public int GetActualScore()
     {
         return playerScore;
     }
-    public int GetKegels()
+    public int GetActualKegels()
     {
         return kegelsDownInGame;
     }

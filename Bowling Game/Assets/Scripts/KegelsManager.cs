@@ -35,7 +35,7 @@ public class KegelsManager : MonoBehaviour
         GameManager.Get().AddScore(kegelsGroup.pointsToTransfer);
         GameManager.Get().KegelsDown(kegelsGroup.amountDown);
 
-        if (playerInfo.shootsAvaible == playerInfo.maxShoots - 1 && GameManager.Get().GetKegels() == kegelsGroup.kegels.Length)
+        if (playerInfo.shootsAvaible == playerInfo.maxShoots - 1 && GameManager.Get().GetActualKegels() == kegelsGroup.kegels.Length)
             kegelsGroup.multiplerPoints = multiplerPointsPerStrike;
 
 

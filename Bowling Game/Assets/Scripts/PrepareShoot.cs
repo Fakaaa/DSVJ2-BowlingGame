@@ -39,7 +39,7 @@ public class PrepareShoot : MonoBehaviour
             else
                 goingDown = false;
         }
-        if(ballForce.shootsAvaible > 0 && !GameManager.Get().GetIfMatchEnds())
+        if(ballForce.shootsAvaible > 0 && !GameManager.Get().GetIfMatchEnds() && !ballForce.shootMode)
             sliderUI.value = ballForce.forceApliedX;
     }
 }
