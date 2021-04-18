@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class ShootToKegels : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Vector3 mousePosition;
+    [SerializeField] public Camera toLookAt;
 
-    // Update is called once per frame
+    [SerializeField] private float maxDistance;
+
+    [SerializeField] private GameObject crossFire;
     void Update()
     {
-        
+        mousePosition = Input.mousePosition;
+
+        Ray ray = toLookAt.ScreenPointToRay(mousePosition);
+        Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.green);
+        crossFire.transform.position = ray.origin + (ray.direction * (maxDistance - 3));
     }
 }
