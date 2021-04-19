@@ -25,6 +25,7 @@ public class ShootToKegels : MonoBehaviour
     private void Awake()
     {
         miniKegels.Clear();
+        Cursor.visible = false;
     }
     void Update()
     {
@@ -48,7 +49,6 @@ public class ShootToKegels : MonoBehaviour
                     {
                         miniKegels.Add(Instantiate(prefabKegel, my_Hit.transform.position, Quaternion.identity, my_Hit.transform));
                     }
-
                     for (int i = 0; i < miniKegels.Count; i++)
                     {
                         if(miniKegels[i] != null)
@@ -63,6 +63,7 @@ public class ShootToKegels : MonoBehaviour
                     GameManager.Get().EndMatch(true);
                 }
             }
+            FindObjectOfType<AudioManager>().Play("SHOOT");
         }
 
     }

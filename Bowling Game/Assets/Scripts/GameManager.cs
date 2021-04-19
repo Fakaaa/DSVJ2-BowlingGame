@@ -54,9 +54,10 @@ public class GameManager : MonoBehaviour
         {
             auxScore = playerScore;
             auxKegels = kegelsDownInGame;
+            Cursor.visible = true;
             scenesRef.LoadNextLevelCustom(2);
         }
-        if(onMainGameMode && resetAll)
+        if (onMainGameMode && resetAll)
         {
             ResetAll();
         }

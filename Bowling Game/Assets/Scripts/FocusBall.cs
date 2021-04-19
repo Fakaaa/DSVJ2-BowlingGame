@@ -10,6 +10,8 @@ public class FocusBall : MonoBehaviour
 
     private Vector3 initialPosCamera;
     public Vector3 toMove;
+
+    private int maxDistanceDelta = 10;
     private void Start()
     {
         toMove = ball.transform.position - offset;
@@ -21,7 +23,7 @@ public class FocusBall : MonoBehaviour
 
         if (followBall)
         {
-            transform.position = Vector3.MoveTowards(transform.position, toMove, 10 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, toMove, maxDistanceDelta * Time.deltaTime);
         }
     }
     public void ResetCameraPos()

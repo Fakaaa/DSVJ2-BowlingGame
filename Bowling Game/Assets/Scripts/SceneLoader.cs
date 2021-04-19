@@ -11,10 +11,6 @@ public class SceneLoader : MonoBehaviour
     public int actualScene;
     void Update()
     {
-        //if (Input.GetMouseButtonDown(0) && !transition.GetBool("NextScene"))
-        //{
-        //    LoadNextLevel();
-        //}
         actualScene = SceneManager.GetActiveScene().buildIndex;
     }
 
